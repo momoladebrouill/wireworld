@@ -28,7 +28,7 @@ ct=0
 
 try:
     pg.init()
-    f = pg.display.set_mode(size=(WIND, WIND))
+    f = pg.display.set_mode((WIND, WIND),pg.RESIZABLE)
     pg.display.set_caption("crédit @ryanair aka soldat µ")
     font=pg.font.SysFont('consolas',25,1)
     while b:
@@ -97,7 +97,8 @@ try:
                         dep.y+=y*5
 
                 nbs=int(WIND/SIZE)
-                
+            elif event.type==pg.VIDEORESIZE:
+                SIZE=min(event.w,event.h)/10
                 
         x,y=pg.mouse.get_pos()
         x=round((x-dep.x)/SIZE)-0.5
